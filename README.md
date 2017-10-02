@@ -27,7 +27,7 @@ In the future, this will include:
 - Sprite Flags
 - Game Code
 
-![]({{site.baseurl}}/Mono8_MapRip2.gif)
+![](Mono8_MapRip2.gif)
 
 This executable requires command line parameters to work, so if you attempt to just run the exe, you will get some fatal errors:
 
