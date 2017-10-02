@@ -9,15 +9,34 @@ Open [PicoRipper.sln](../blob/master/PicoRipper/PicoRipper.sln) in Visual Studio
 
 .NET 4.5 is the only requirement.
 
-# How to Use
+# Quick Start Guide
 
-Once Pico Ripper is built, navigate to the bin folder: PicoRipper\PicoRipper\PicoRipper\bin\Debug(or Release)\
+Find PicoRipper.exe in \PicoRipper\bin\Debug(or Release)\
 
-There you will find PicoRipper.exe.
+Drag a .p8 file _on to_ PicoRipper.exe.
+
+This will spit out 2 files into the directory where the p8 file lives:
+
+- (filename).tmx (this is a Tiled TMX Map file)
+- (filename).png (this is the sprite sheet used by the TMX file)
+
+In the future, this will include:
+
+- Sound Effects
+- Music
+- Sprite Flags
+- Game Code
+
+![]({{site.baseurl}}/Mono8_MapRip2.gif)
 
 This executable requires command line parameters to work, so if you attempt to just run the exe, you will get some fatal errors:
 
-![Error when no arguments are passed via command line.]({{site.baseurl}}//2017-10-01.png)
-
 "Fatal: No arguments passed to program. Path to P8 file required."
+
+# Command Line Arguments
+
+If you wish to have more control over how Pico Ripper runs, you can do so with the following command line arguments:
+
+[Documentation of Arguments](https://github.com/mhughson/PicoRipper/blob/master/PicoRipper/PicoRipper/Program.cs#L115-L121)
+
 
