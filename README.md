@@ -17,14 +17,13 @@ Drag a .p8 file _on to_ PicoRipper.exe.
 
 This will spit out 2 files into the directory where the p8 file lives:
 
-- (filename).tmx (this is a Tiled TMX Map file)
+- (filename).tmx (this is a Tiled TMX Map file with sprite flags stored in the SpriteSheet)
 - (filename).png (this is the sprite sheet used by the TMX file)
 
 In the future, this will include:
 
 - Sound Effects
 - Music
-- Sprite Flags
 - Game Code
 
 ![](Mono8_MapRip2.gif)
