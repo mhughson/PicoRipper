@@ -34,7 +34,7 @@ namespace PicoRipper
         public TmxTileSet TileSet = new TmxTileSet();
 
         [XmlElement("layer")]
-        public TmcLayer Layer = new TmcLayer();
+        public TmxLayer Layer = new TmxLayer();
 
         [XmlType("tileset")]
         public class TmxTileSet
@@ -73,10 +73,43 @@ namespace PicoRipper
                 [XmlAttribute("height")]
                 public int Height = 128;
             }
+
+            [XmlElement("tile")]
+            public List<TmxTile> TileList = new List<TmxTile>();
+
+            [XmlType("tile")]
+            public class TmxTile
+            {
+                [XmlAttribute("id")]
+                public int ID = 0;
+
+                [XmlElement("properties")]
+                public TmxTileProperties Properties;
+
+                [XmlType("properties")]
+                public class TmxTileProperties
+                {
+                    [XmlElement("property")]
+                    public List<TmxTileProperty> PropertyList = new List<TmxTileProperty>();
+
+                    [XmlType("property")]
+                    public class TmxTileProperty
+                    {
+                        [XmlAttribute("name")]
+                        public string Name = "Flag";
+
+                        [XmlAttribute("type")]
+                        public string Type = "int";
+
+                        [XmlAttribute("value")]
+                        public string Value = "";
+                    }
+                }
+            }
         }
 
         [XmlType("layer")]
-        public class TmcLayer
+        public class TmxLayer
         {
             [XmlAttribute("name")]
             public string Name = "Tile Layer 1";

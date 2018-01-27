@@ -74,6 +74,38 @@ namespace PicoRipper
 
             ActiveMap.TileSet.Image.Source = SpritePath;
 
+            // SPRITE FLAGS
+            //
+
+            // Data is stored in GFF section.
+            string FlagText = P8Text.Substring(P8Text.LastIndexOf("__gff__") + "__gff__".Length);
+            FlagText = FlagText.Remove(FlagText.IndexOf("__"));
+
+            FlagText = Regex.Replace(FlagText, @"\t|\n|\r", "");
+            byte[] FlagBytes = StringToByteArray(FlagText);
+
+            // Store that flags. They are in order of the sprites.
+            for (int i = 0; i < FlagBytes.Length; i++)
+            {
+                if (FlagBytes[i] != 0)
+                {
+                    ActiveMap.TileSet.TileList.Add(new TmxMap.TmxTileSet.TmxTile()
+                    {
+                        ID = i,
+                        Properties = new TmxMap.TmxTileSet.TmxTile.TmxTileProperties()
+                        {
+                            PropertyList = new System.Collections.Generic.List<TmxMap.TmxTileSet.TmxTile.TmxTileProperties.TmxTileProperty>()
+                            {
+                                new TmxMap.TmxTileSet.TmxTile.TmxTileProperties.TmxTileProperty()
+                                {
+                                    Value = FlagBytes[i].ToString()
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+
             // Save the map out to file.
             XmlSerializer XmlSerial = new XmlSerializer(ActiveMap.GetType());
             XmlSerializerNamespaces NS = new XmlSerializerNamespaces();
